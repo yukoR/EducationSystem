@@ -12,15 +12,13 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->date('posted_date');
-            $table->text('article_contents');
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('videos', function (Blueprint $table) {
+        $table->id();
+        $table->string('file_path'); // 動画ファイルのパスを保存
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('videos');
     }
 };
