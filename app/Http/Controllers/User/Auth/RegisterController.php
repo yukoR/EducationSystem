@@ -69,52 +69,8 @@ class RegisterController extends Controller
         
         //return response()->json(['success' => true]);
         return redirect()->route('user.show.login')->with('success', 'ユーザー登録が完了しました。');
-        
     }
-
-    public function store(Request $request) {
-        $user = User::create([
-                'name' => $request->name,
-                'name_kana' => $request->name_kana,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-        ]);
-
-        return redirect()->route('user.show.login')->with('success', 'ユーザー登録が完了しました。');
-
-    }
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest');
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data) {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255', 'regex:/^[\pL\pN\s]+$/u'],
-            'name_kana' => ['required', 'string', 'max:255', 'regex:/^[ァ-ヶー]+$/u'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
     }
 }
