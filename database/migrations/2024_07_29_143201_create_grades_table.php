@@ -14,12 +14,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('grades', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
-        });
-
+        if (!Schema::hasTable('grades')) {
+            Schema::create('grades', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->timestamps();
+            });
+        }
+        
         DB::table('grades')->insert([
             ['id' => 1, 'name' => '小学校1年生'],
             ['id' => 2, 'name' => '小学校2年生'],
