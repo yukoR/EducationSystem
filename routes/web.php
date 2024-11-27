@@ -41,8 +41,8 @@ Route::prefix('user')->namespace('User')->name('user.')->group(function() {
     Route::get('/profile', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.profile')->defaults('viewType', 'profile');
     Route::get('/curriculum_progress', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.curriculum.progress')->defaults('viewType', 'curriculum_progress');
     Route::get('/curriculum_list', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.curriculum.list')->defaults('viewType', 'curriculum_list');
-    Route::get('/test_article/{article}', [App\Http\Controllers\User\ArticleController::class, 'showArticle'])->name('show.test.article');
-    Route::post('/test_article', [App\Http\Controllers\User\ArticleController::class, 'store'])->name('articles.store');
+    Route::get('/article/{article}', [App\Http\Controllers\User\ArticleController::class, 'showArticle'])->name('show.article');
+    Route::post('/article', [App\Http\Controllers\User\ArticleController::class, 'store'])->name('articles.store');
 
 });
 

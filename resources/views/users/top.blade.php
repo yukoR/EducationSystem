@@ -54,7 +54,7 @@
                         @foreach ($articles as $article)
                             <li>
                                 <div class="link">
-                                    <a href="{{ route('user.show.test.article', $article->id) }}" class="fs-4">
+                                    <a href="{{ route('user.show.article', $article->id) }}" class="fs-4">
                                         {{ \Carbon\Carbon::parse($article->posted_date)->format('Y年m月d日') }} &nbsp;&nbsp; {{ $article->title }}
                                     </a>
                                 </div>

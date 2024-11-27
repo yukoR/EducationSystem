@@ -14,7 +14,7 @@ class ArticleController extends Controller
     }
 
     public function showArticle(Article $article) {
-        return view('users.test_article', compact('article'));
+        return view('users.article', compact('article'));
     }
     
     public function store(Request $request) {
