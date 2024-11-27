@@ -39,9 +39,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <div class="d-flex justify-content-start">
-                            <a href="curriculum_list" class="btn btn-green me-2">時間割</a>
-                            <a href="curriculum_progress" class="btn btn-green me-2">授業進捗</a>
-                            <a href="profile" class="btn btn-green">プロフィール設定</a>
+                            <a href="/user/curriculum_list" class="btn btn-green me-2">時間割</a>
+                            <a href="/user/curriculum_progress" class="btn btn-green me-2">授業進捗</a>
+                            <a href="/user/profile" class="btn btn-green">プロフィール設定</a>
                         </div>
                     </ul>
 
@@ -50,7 +50,7 @@
                         <!-- Authentication Links -->
                         @guest
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('/user/login') }}">{{ __('ログイン') }}</a>
+                                    <a class="nav-link" href="{{ route('user.show.login') }}">{{ __('ログイン') }}</a>
                                 </li>
                             @else
                                 <li class="nav-item">
