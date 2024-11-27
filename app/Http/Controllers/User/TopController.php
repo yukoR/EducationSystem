@@ -26,11 +26,11 @@ class TopController extends Controller
         $curriculums = Curriculums::all();
         switch ($viewType) {
             case 'profile':
-                return view('users.test_profile');
+                return view('users.profile');
             case 'curriculum_list':
-                return view('users.test_curriculum_list', compact('curriculums'));
+                return view('users.curriculum_list', compact('curriculums'));
             case 'curriculum_progress':
-                return view('users.test_curriculum_progress');
+                return view('users.curriculum_progress');
             default:
                 abort(404);
         };
