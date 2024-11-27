@@ -38,9 +38,9 @@ Route::prefix('user')->namespace('User')->name('user.')->group(function() {
     Route::post('/top', [App\Http\Controllers\User\BannerController::class, 'store'])->name('banners.store');
     Route::get('/delivery', [App\Http\Controllers\User\DeliveryController::class, 'showDelivery'])->name('show.delivery');
 
-    Route::get('/test_profile', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.profile')->defaults('viewType', 'profile');
-    Route::get('/test_curriculum_progress', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.curriculum.progress')->defaults('viewType', 'curriculum_progress');
-    Route::get('/test_curriculum_list', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.curriculum.list')->defaults('viewType', 'curriculum_list');
+    Route::get('/profile', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.profile')->defaults('viewType', 'profile');
+    Route::get('/curriculum_progress', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.curriculum.progress')->defaults('viewType', 'curriculum_progress');
+    Route::get('/curriculum_list', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.curriculum.list')->defaults('viewType', 'curriculum_list');
     Route::get('/test_article/{article}', [App\Http\Controllers\User\ArticleController::class, 'showArticle'])->name('show.test.article');
     Route::post('/test_article', [App\Http\Controllers\User\ArticleController::class, 'store'])->name('articles.store');
 

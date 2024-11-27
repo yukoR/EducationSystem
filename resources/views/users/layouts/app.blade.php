@@ -25,9 +25,6 @@
 </head>
 <body>
 
-
-
-
 @if (!request()->routeIs('user.show.register') && !request()->routeIs('user.show.login') && !request()->routeIs('logout'))
 <header class="header">
     <div id="app">
@@ -42,9 +39,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <div class="d-flex justify-content-start">
-                            <a href="test_curriculum_list" class="btn btn-green me-2">時間割</a>
-                            <a href="test_curriculum_progress" class="btn btn-green me-2">授業進捗</a>
-                            <a href="test_profile" class="btn btn-green">プロフィール設定</a>
+                            <a href="curriculum_list" class="btn btn-green me-2">時間割</a>
+                            <a href="curriculum_progress" class="btn btn-green me-2">授業進捗</a>
+                            <a href="profile" class="btn btn-green">プロフィール設定</a>
                         </div>
                     </ul>
 
