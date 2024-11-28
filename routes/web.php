@@ -37,6 +37,7 @@ Route::prefix('user')->namespace('User')->name('user.')->group(function() {
     Route::get('/top', [App\Http\Controllers\User\TopController::class, 'showTop'])->name('show.top');
     Route::post('/top', [App\Http\Controllers\User\BannerController::class, 'store'])->name('banners.store');
     Route::get('/delivery/{id}', [App\Http\Controllers\User\DeliveryController::class, 'showDelivery'])->name('show.delivery');
+    Route::post('/delivery/{id}', [App\Http\Controllers\User\DeliveryController::class, 'markAsCompleted'])->name('curriculum.markAsCompleted');
 
     Route::get('/profile', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.profile')->defaults('viewType', 'profile');
     Route::get('/curriculum_progress', [App\Http\Controllers\User\TopController::class, 'showTest'])->name('show.test.curriculum.progress')->defaults('viewType', 'curriculum_progress');

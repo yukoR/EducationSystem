@@ -19,4 +19,14 @@ class DeliveryController extends Controller
         //dd($curriculum->grades->name);
         return view('users.delivery',compact( 'curriculum', 'video'));
     }
+
+    public function markAsCompleted($id) {
+        $curriculumProgress = CurriculumProgress::where('curriculums_id', $id)->first();
+        
+        if ($curriculumProgress) {
+            $curriculumProgress->clear_flg = 1;
+            $curriculumProgress->save();
+        }
+        return redirect()->back()->with('status', '受講が完了しました！');
+    }
 }
