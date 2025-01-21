@@ -13,20 +13,28 @@
                     @endif
                     <a href="{{ route('user.show.top') }}" >←戻る</a>
 
-                    <div>
-                        <video width="320" height="240" controls>
-                            <source src="{{ asset('storage/' . $video->video_url) }}" type="video/mp4">
-                        </video>
+                    <div class="video-container">
+                        @if ($isAvailable)
+                            <video class="video-element" width="320" height="240" controls>
+                                <source src="{{ asset('storage/' . $video->video_url) }}" type="video/mp4">
+                            </video>
+                        @else
+                            <p>この動画は現在視聴できません</p>
+                        @endif
+                            
+                        
                     </div>
 
-                    <div>
+                    <div class="button-container">
                         <form action="{{ route('user.curriculum.markAsCompleted', $curriculum->id) }}" method="post">
                             @csrf
-                            <button>受講しました</button>
+                            <button type="submit" {{ $isAvailable ? '' : 'disabled'}} class="complete-button">
+                                {{ $isAvailable ? '受講しました' : '現在受講できません'}}
+                            </button>
                         </form>
                     </div>
 
-                    <div>
+                    <div class="">
                         @if ($curriculum->grades)
                         <p><h3>{{ $curriculum->grades->name }}</h3></p>
                         @else

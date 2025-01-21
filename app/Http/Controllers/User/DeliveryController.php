@@ -9,6 +9,7 @@ use App\Models\Curriculums;
 use App\Models\CurriculumProgress;
 use App\Models\DeliveryTime;
 use App\Models\Video;
+use Carbon\Carbon;
 
 class DeliveryController extends Controller
 {
@@ -16,8 +17,15 @@ class DeliveryController extends Controller
         $user = auth()->user();
         $curriculum = Curriculums::with('deliveryTimes', 'grades')->findOrFail($id);
         $video = Curriculums::where('video_url', $curriculum->video_url)->first();
-        //dd($curriculum->grades->name);
-        return view('users.delivery',compact( 'curriculum', 'video'));
+
+        $currentDate = Carbon::now();
+        $deliveryTime = $curriculum->deliveryTimes;
+
+        $isAvailable = false;
+        if ($deliveryTime) {
+            $isAvailable = $currentDate->between($deliveryTime->delivery_from, $deliveryTime->delivery_to);
+        }
+        return view('users.delivery',compact( 'curriculum', 'video', 'isAvailable'));
     }
 
     public function markAsCompleted($id) {
