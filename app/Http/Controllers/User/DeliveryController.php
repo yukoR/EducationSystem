@@ -19,11 +19,28 @@ class DeliveryController extends Controller
         $video = Curriculums::where('video_url', $curriculum->video_url)->first();
 
         $currentDate = Carbon::now();
-        $deliveryTime = $curriculum->deliveryTimes;
-
+        $deliveryTimes = $curriculum->deliveryTimes;
         $isAvailable = false;
-        if ($deliveryTime) {
-            $isAvailable = $currentDate->between($deliveryTime->delivery_from, $deliveryTime->delivery_to);
+
+        if (!empty($deliveryTimes)) {
+            foreach ($deliveryTimes as $deliveryTime) {
+                if (is_object($deliveryTime)) {
+                    if (isset($deliveryTime -> delivery_from, $deliveryTime -> delivery_to) &&
+                    $currentDate -> between($deliveryTime -> delivery_from, $deliveryTime -> delivery_to)) {
+                        $isAvailable = true;
+                        break;
+                    }
+                }
+                elseif (is_array($deliveryTime)) {
+                    $deliveryTime = (object) $deliveryTime;
+
+                    if (isset($deliveryTime -> delivery_from, $deliveryTime -> delivery_to) &&
+                    $currentDate -> between($deliveryTime -> delivery_from, $deliveryTime -> delivery_to)) {
+                        $isAvailable = true;
+                        break;
+                    }
+                }
+            }
         }
         return view('users.delivery',compact( 'curriculum', 'video', 'isAvailable'));
     }
